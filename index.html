@@ -1,15 +1,16 @@
 <html>
 <head>
 <script type="text/javascript" language=JavaScript charset="UTF-8">
-count=0
+count=window.location.hash.split('#')[1] || 0;
 document.onkeyup=function(event){
-	var e = event || window.event || arguments.callee.caller.arguments[0];
-	if(e && e.keyCode==32){
-		count++;
-		document.getElementById("counter").innerHTML = window.count;
-	}
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    if(e && e.keyCode==32){
+        count++;
+        document.getElementById("counter").innerHTML = window.count;
+    }
 	
 }
+
 </script>
 <style>
 .cell{
@@ -26,6 +27,12 @@ document.onkeyup=function(event){
 </style>
 <head>
 <body> 
-<div class="cell"><font id="counter" color='red'>0</font></div>
+<div class="cell">
+    <font id="counter" color='red'>
+        <script>
+            document.getElementById("counter").innerHTML = window.count;
+            </script>
+    </font>
+</div>
 </body>
 </html>
